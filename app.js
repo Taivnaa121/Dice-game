@@ -74,7 +74,17 @@ document.querySelector(".btn-hold").addEventListener("click", function () {
   // toglogchiin hojson eshiig shalgah(100-s ih eshiig)
   if (scores[activePlayer] >= 20) {
     document.getElementById("name-" + activePlayer).textContent = "WINNER !!!";
-    document.getElementById("name-" + activePlayer).style.color+
+    document
+      .querySelector(".player-" + activePlayer + "-panel")
+      .classList.add("winner");
+      document
+      .querySelector(".player-" + activePlayer + "-panel")
+      .classList.remove("active");
+  } else {
+    solih();
   }
-  solih();
 });
+//  shineer ehleh
+document.querySelector(".btn-new").addEventListener("click",function(){
+  
+})
