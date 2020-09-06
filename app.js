@@ -6,6 +6,20 @@ var scores = [0, 0];
 
 // Тоглогчийн ээлжиндээ цуглуулж байгаа оноог хадгалах хувьсагч
 var roundScore = 0;
+solih = function () {
+  roundScore = 0;
+  document.getElementById("current-" + activePlayer).textContent = 0;
+  // toglogchii eeljiig nuguu toglogch ruu shiljuulne
+  //herev idevhitei toglogch ni 0 baival  idevhitei toglogschiig 1 bolgo ugui bol 0 bolgo
+  activePlayer == 0 ? (activePlayer = 1) : (activePlayer = 0);
+  //idevhitei toglogchiig  shiljuuleh (ulaan tseg)
+
+  document.querySelector(".player-0-panel").classList.toggle("active");
+  document.querySelector(".player-1-panel").classList.toggle("active");
+
+  //shoog tur alga bolgono
+  diceDom.style.display = "none";
+};
 
 // Шооны аль талаараа буусныг хадгалах хувьсагч хэрэгтэй, 1-6 гэсэн утгыг энэ хувьсагчид санамсаргүйгээр үүсгэж өгнө.
 
@@ -35,18 +49,32 @@ document.querySelector(".btn-roll").addEventListener("click", function () {
     roundScore = roundScore + diceNumber;
     document.getElementById("current-" + activePlayer).textContent = roundScore;
   } else {
-    //1 buusan bol toglogchiin eeliig solino
-    roundScore = 0;
-    document.getElementById("current-" + activePlayer).textContent = 0;
-    // toglogchii eeljiig nuguu toglogch ruu shiljuulne
-    //herev idevhitei toglogch ni 0 baival  idevhitei toglogschiig 1 bolgo ugui bol 0 bolgo
-    activePlayer == 0 ? (activePlayer = 1) : (activePlayer = 0);
-    //idevhitei toglogchiig  shiljuuleh (ulaan tseg)
+    solih();
 
-    document.querySelector(".player-0-panel").classList.toggle("active");
-    document.querySelector(".player-1-panel").classList.toggle("active");
-    
-    //shoog tur alga bolgono
-    diceDom.style.display="none";
+    //1 buusan bol toglogchiin eeliig solino
+    // roundScore = 0;
+    // document.getElementById("current-" + activePlayer).textContent = 0;
+    // // toglogchii eeljiig nuguu toglogch ruu shiljuulne
+    // //herev idevhitei toglogch ni 0 baival  idevhitei toglogschiig 1 bolgo ugui bol 0 bolgo
+    // activePlayer == 0 ? (activePlayer = 1) : (activePlayer = 0);
+    // //idevhitei toglogchiig  shiljuuleh (ulaan tseg)
+
+    // document.querySelector(".player-0-panel").classList.toggle("active");
+    // document.querySelector(".player-1-panel").classList.toggle("active");
+
+    // //shoog tur alga bolgono
+    // diceDom.style.display = "none";
   }
+});
+//hold tovchnii event listener
+document.querySelector(".btn-hold").addEventListener("click", function () {
+  scores[activePlayer] += roundScore;
+  document.getElementById("score-" + activePlayer).textContent =
+    scores[activePlayer];
+  // toglogchiin hojson eshiig shalgah(100-s ih eshiig)
+  if (scores[activePlayer] >= 20) {
+    document.getElementById("name-" + activePlayer).textContent = "WINNER !!!";
+    document.getElementById("name-" + activePlayer).style.color+
+  }
+  solih();
 });
