@@ -1,11 +1,42 @@
+var diceDom = document.querySelector(".dice");
 // Тоглогчийн ээлжийг хадгалах хувьсагч, нэгдүгээр тоглогчийг 0, хоёрдугаар тоглогчийг 1 гэж тэмдэглэе.
-var activePlayer = 0;
+var activePlayer;
 
 // Тоглогчдын цуглуулсан оноог хадгалах хувьсагч
-var scores = [0, 0];
+var scores;
 
 // Тоглогчийн ээлжиндээ цуглуулж байгаа оноог хадгалах хувьсагч
-var roundScore = 0;
+var roundScore;
+
+initGame();
+//togloom shineer ehlehed beltgene
+function initGame(){
+  activePlayer = 0;
+
+  // Тоглогчдын цуглуулсан оноог хадгалах хувьсагч
+  scores = [0, 0];
+
+  // Тоглогчийн ээлжиндээ цуглуулж байгаа оноог хадгалах хувьсагч
+  roundScore = 0;
+
+  document.getElementById("score-0").textContent = 0;
+  document.getElementById("score-1").textContent = 0;
+  document.getElementById("current-0").textContent = 0;
+  document.getElementById("current-1").textContent = 0;
+
+  diceDom.style.display = "none";
+
+  document.getElementById("name-0").textContent="Player 1"
+  document.getElementById("name-1").textContent="Player 2"
+
+  document.querySelector('.player-0-panel').classList.remove("winner");
+  document.querySelector('.player-1-panel').classList.remove("winner");
+
+  document.querySelector('.player-0-panel').classList.remove("active");
+  document.querySelector('.player-1-panel').classList.remove("active");
+
+  document.querySelector('.player-0-panel').classList.add("active");
+};
 solih = function () {
   roundScore = 0;
   document.getElementById("current-" + activePlayer).textContent = 0;
@@ -27,14 +58,6 @@ solih = function () {
 // window.document.querySelector("#score-0").textContent = dice;
 
 // document.querySelector("#score-1").innerHTML = "<em>Yes!<em>";
-
-// Програм эхлэхэд бэлтгэе
-document.getElementById("score-0").textContent = 0;
-document.getElementById("score-1").textContent = 0;
-document.getElementById("current-0").textContent = 0;
-document.getElementById("current-1").textContent = 0;
-var diceDom = document.querySelector(".dice");
-diceDom.style.display = "none";
 //shoog shideh  event listener
 document.querySelector(".btn-roll").addEventListener("click", function () {
   // 1-6 sanamsargui toog avna
@@ -77,7 +100,7 @@ document.querySelector(".btn-hold").addEventListener("click", function () {
     document
       .querySelector(".player-" + activePlayer + "-panel")
       .classList.add("winner");
-      document
+    document
       .querySelector(".player-" + activePlayer + "-panel")
       .classList.remove("active");
   } else {
@@ -85,6 +108,4 @@ document.querySelector(".btn-hold").addEventListener("click", function () {
   }
 });
 //  shineer ehleh
-document.querySelector(".btn-new").addEventListener("click",function(){
-  
-})
+document.querySelector(".btn-new").addEventListener("click", initGame);
