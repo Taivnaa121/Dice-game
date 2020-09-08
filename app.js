@@ -111,7 +111,7 @@ document.querySelector(".btn-hold").addEventListener("click", function () {
     document.getElementById("score-" + activePlayer).textContent =
       scores[activePlayer];
     // toglogchiin hojson eshiig shalgah(100-s ih eshiig)
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= 100) {
       isGameOver = true;
 
       document.getElementById("name-" + activePlayer).textContent =
