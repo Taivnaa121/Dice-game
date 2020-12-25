@@ -13,7 +13,7 @@ var roundScore;
 
 initGame();
 //togloom shineer ehlehed beltgene
-function initGame() {
+function  initGame() {
   //togloom ehelle gesen tuluvt oruulah
   isGameOver = false;
   activePlayer = 0;
